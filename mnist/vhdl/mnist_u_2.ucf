@@ -1,0 +1,2 @@
+NET "clk" TNM_NET = "tnm_clk";
+TIMESPEC "TS_clk" = PERIOD "tnm_clk" 16 ns HIGH 50 %;
