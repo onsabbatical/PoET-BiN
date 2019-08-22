@@ -32,9 +32,9 @@ class Net(nn.Module):
         y_final[:,8] = self.fc08(x[:,48:54])[:,0]
         y_final[:,9] = self.fc09(x[:,54:60])[:,0]
 
-        x6 = self.batch10(y_final)
+        #x6 = self.batch10(y_final)
 
 
-        return x6
+        return y_final
 
 
