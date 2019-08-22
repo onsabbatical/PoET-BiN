@@ -5,11 +5,11 @@ cur_path = os.path.abspath(__file__)
 file_name = 'comp_gen.txt'
 f = open(cur_path+file_name,'w')
 
-
+#First input and last output###
 inp_data = np.load('dt_test_inp.npy').astype(int)
-out_matrix = np.load('classifier_36_6/test_output_0.npy')
+out_matrix = np.load('class_8/test_output_0.npy')
 
-
+#Two's complement#
 def twos_comp(inp):
 	temp_out = 'b'
 	for i in range(8):
@@ -33,7 +33,7 @@ def twos_comp(inp):
 			cin = 1
 	fin_out = out[::-1]
 	return fin_out[:-1]
-
+#Out matrix in python is in integer, needs to be converted to binary#
 out_matrix_bin = np.zeros((np.shape(out_matrix)[0],10,8))
 for i in range(np.shape(out_matrix)[0]):
 	for j in range(10):
@@ -50,7 +50,7 @@ for i in range(np.shape(out_matrix)[0]):
 
 out_matrix_bin = out_matrix_bin.astype(int)
 
-
+#Testbench#
 for i in range(100):
 	f.write('inp_feat <= \"' );
 	for j in range(np.shape(inp_data)[1]):
