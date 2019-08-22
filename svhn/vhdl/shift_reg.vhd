@@ -2,9 +2,9 @@
 -- Company: 
 -- Engineer: 
 -- 
--- Create Date: 07/03/2019 02:37:52 PM
+-- Create Date: 07/03/2019 12:49:41 PM
 -- Design Name: 
--- Module Name: top_module - Behavioral
+-- Module Name: shift_reg - Behavioral
 -- Project Name: 
 -- Target Devices: 
 -- Tool Versions: 
@@ -31,40 +31,26 @@ use IEEE.STD_LOGIC_1164.ALL;
 --library UNISIM;
 --use UNISIM.VComponents.all;
 
-entity svhn_top_top is
-    Port ( serial_in : in STD_LOGIC;
-           fin_out : out STD_LOGIC_VECTOR (79 downto 0);
-           --clr : in std_logic;
-			  --rst :in std_logic;
-           clk : in STD_LOGIC);
-end svhn_top_top;
-
-architecture Behavioral of svhn_top_top is
-component svhn_reg_fin
-    Port ( inp_feat : in  STD_LOGIC_VECTOR (511 downto 0);
-			  out_fin : out  STD_LOGIC_VECTOR (79 downto 0));
-end component;
-
-component shift_reg is
+entity shift_reg is
     Port ( serial_in : in STD_LOGIC;
            clk : in STD_LOGIC;
            clr : in std_logic;
            parallel_out : out STD_LOGIC_VECTOR (511 downto 0));
+end shift_reg;
+
+architecture Behavioral of shift_reg is
+signal cout_shift : std_logic_vector(511 downto 0) := (others => '0');
+component d_ff
+Port ( d : in STD_LOGIC;
+           q : out STD_LOGIC;
+           clr : in std_logic;
+           clk : in STD_LOGIC);
 end component;
-signal connect_wire : std_logic_vector(511 downto 0);
-signal false_out: std_logic_vector(79 downto 0);
-
 begin
-full_imp_inst :svhn_reg_fin port map(inp_feat => connect_wire, out_fin => false_out);
-shift_reg_inst : shift_reg port map(serial_in => serial_in, clk => clk, clr => '0', parallel_out => connect_wire); 
-
-process(clk)
-begin
-		if rising_edge(clk) then
-			fin_out <= false_out;
-		end if;
-
-end process;
-
+d_ff_gen_1 : d_ff port map (d => serial_in, q => cout_shift(0), clk => clk, clr => clr);
+gen_d_ff : for i in 1 to 511 generate
+     d_ff_gen : d_ff port map (d => cout_shift(i-1), q => cout_shift(i), clk => clk, clr => clr);
+end generate gen_d_ff;
+parallel_out <= cout_shift;
 
 end Behavioral;
