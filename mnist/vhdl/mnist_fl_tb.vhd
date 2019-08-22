@@ -2,15 +2,15 @@
 -- Company: 
 -- Engineer:
 --
--- Create Date:   01:13:09 07/28/2019
+-- Create Date:   11:11:29 08/06/2019
 -- Design Name:   
--- Module Name:   D:/siva/Masters/Thesis/07_ETE_19/part_svhn/mnist_tb.vhd
--- Project Name:  part_svhn
+-- Module Name:   D:/siva/Masters/Thesis/07_ETE_19/mnist_checking/mnist_fl_tb.vhd
+-- Project Name:  mnist_checking
 -- Target Device:  
 -- Tool versions:  
 -- Description:   
 -- 
--- VHDL Test Bench Created by ISE for module: minst_check
+-- VHDL Test Bench Created by ISE for module: mnist_fl_check
 -- 
 -- Dependencies:
 -- 
@@ -32,19 +32,19 @@ USE ieee.std_logic_1164.ALL;
 -- arithmetic functions with Signed or Unsigned values
 --USE ieee.numeric_std.ALL;
  
-ENTITY mnist_tb IS
-END mnist_tb;
+ENTITY mnist_fl_tb IS
+END mnist_fl_tb;
  
-ARCHITECTURE behavior OF mnist_tb IS 
+ARCHITECTURE behavior OF mnist_fl_tb IS 
  
     -- Component Declaration for the Unit Under Test (UUT)
  
-    COMPONENT minst_check
+    COMPONENT mnist_fl_check
     PORT(
          inp_feat : IN  std_logic_vector(511 downto 0);
-         out_fin : OUT  std_logic_vector(79 downto 0);
          cor_in : IN  std_logic_vector(79 downto 0);
-         cor_out : OUT  std_logic_vector(79 downto 0)
+         cor_out : OUT  std_logic_vector(79 downto 0);
+         out_fin : OUT  std_logic_vector(79 downto 0)
         );
     END COMPONENT;
     
@@ -54,30 +54,30 @@ ARCHITECTURE behavior OF mnist_tb IS
    signal cor_in : std_logic_vector(79 downto 0) := (others => '0');
 
  	--Outputs
-   signal out_fin : std_logic_vector(79 downto 0);
    signal cor_out : std_logic_vector(79 downto 0);
+   signal out_fin : std_logic_vector(79 downto 0);
    -- No clocks detected in port list. Replace <clock> below with 
    -- appropriate port name 
  
-   --constant <clock>_period : time := 10 ns;
+  -- constant <clock>_period : time := 10 ns;
  
 BEGIN
  
 	-- Instantiate the Unit Under Test (UUT)
-   uut: minst_check PORT MAP (
+   uut: mnist_fl_check PORT MAP (
           inp_feat => inp_feat,
-          out_fin => out_fin,
           cor_in => cor_in,
-          cor_out => cor_out
+          cor_out => cor_out,
+          out_fin => out_fin
         );
 
    -- Clock process definitions
-   --<clock>_process :process
+  -- <clock>_process :process
    --begin
-		--<clock> <= '0';
-		--wait for <clock>_period/2;
-		--<clock> <= '1';
-		--wait for <clock>_period/2;
+	--	<clock> <= '0';
+	--	wait for <clock>_period/2;
+	--	<clock> <= '1';
+	--	wait for <clock>_period/2;
    --end process;
  
 

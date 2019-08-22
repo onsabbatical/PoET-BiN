@@ -34,8 +34,8 @@ use IEEE.STD_LOGIC_1164.ALL;
 entity mnist_top_top is
     Port ( serial_in : in STD_LOGIC;
            fin_out : out STD_LOGIC_VECTOR (79 downto 0);
-           clr : in std_logic;
-			  rst :in std_logic;
+           --clr : in std_logic;
+			  --rst :in std_logic;
            clk : in STD_LOGIC);
 end mnist_top_top;
 
@@ -56,18 +56,16 @@ signal false_out: std_logic_vector(79 downto 0);
 
 begin
 full_imp_inst :mnist_org port map(inp_feat => connect_wire, out_fin => false_out);
-shift_reg_inst : shift_reg port map(serial_in => serial_in, clk => clk, clr => clr, parallel_out => connect_wire); 
+shift_reg_inst : shift_reg port map(serial_in => serial_in, clk => clk, clr => '0', parallel_out => connect_wire); 
 
-process(clk,rst,false_out)
+process(clk,false_out)
 begin
-if rst = '1' then
-		fin_out <= (others => '0');
-else
-		if rising_edge(clk) then
-			fin_out <= false_out;
-		end if;
-end if;
-end process;
 
+	if rising_edge(clk) then
+		fin_out <= false_out;
+	end if;
+
+
+end process;
 
 end Behavioral;
