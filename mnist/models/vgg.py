@@ -20,15 +20,15 @@ class bin_act(nn.Module):
 
 
 class VGG(nn.Module):
-    def __init__(self, vgg_name,inputs=6):
+    def __init__(self, vgg_name,inputs=8):
         super(VGG, self).__init__()
         self.features = self._make_layers(cfg[vgg_name])
         #self.classifier = nn.Linear(512, 10)
         self.inputs=inputs
         self.layer_int0 = nn.Linear(512,512)
         self.batch0 = nn.BatchNorm1d(512)
-        self.layer_int2 = nn.Linear(512,60)
-        self.batch2 = nn.BatchNorm1d(60)
+        self.layer_int2 = nn.Linear(512,80)
+        self.batch2 = nn.BatchNorm1d(80)
         self.fc00 = nn.Linear(inputs,1)
         self.fc01 = nn.Linear(inputs,1)
         self.fc02 = nn.Linear(inputs,1)
