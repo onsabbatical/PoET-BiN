@@ -52,7 +52,7 @@ def store_value2(main_array,cu_fl,i,name):
 	return main_array
 
 def store_all_weights(dict_wb):
-	weight_matrix = torch.Tensor(1,6).type(torch.cuda.FloatTensor)
+	weight_matrix = torch.Tensor(1,8).type(torch.cuda.FloatTensor)
 	bias_matrix = torch.Tensor(1).type(torch.cuda.FloatTensor)
 
 	for items in dict_wb:
