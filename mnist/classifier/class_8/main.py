@@ -39,5 +39,5 @@ trainloader = (torch_train.reshape(500,100,80)).type(torch.FloatTensor)
 testloader  = torch_test[:10000,:].reshape(100,100,80).type(torch.FloatTensor)
 
 
-train(num_epochs,LR_start,LR_fin,LR_decay,H,N,th,trainloader,testloader,my_batch,torch_tr_l,torch_te_l)
+train(100,LR_start,LR_fin,LR_decay,H,N,th,trainloader,testloader,my_batch,torch_tr_l,torch_te_l)
 test_acc()		
