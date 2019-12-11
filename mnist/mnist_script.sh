@@ -40,7 +40,7 @@ python gen_last_vhdl.py
 
 echo "Generating RINC modules VHDL"
 
-python cd ..
+cd ..
 
 python vhdl_gen_v1.py
 
