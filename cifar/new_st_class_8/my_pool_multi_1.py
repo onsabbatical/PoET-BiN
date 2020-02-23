@@ -26,7 +26,7 @@ cur_pred_y_train_store = np.zeros((np.shape(y_train)[0],np.shape(y_train)[1])).a
 cur_pred_y_test_store = np.zeros((np.shape(y_test)[0],np.shape(y_test)[1])).astype(bool)
 
 
-tot_est = 48  
+tot_est = 40  
 hyp_inp = 8
 total_estimators = tot_est
 c_feats_store = np.zeros((10*hyp_inp,int(total_estimators/hyp_inp),hyp_inp,hyp_inp))
