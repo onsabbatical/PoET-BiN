@@ -2,8 +2,8 @@ import numpy as np
 import torch
 
 
-train_output_store = np.uint8(np.zeros((1,80)))
-train_output_t_store = torch.zeros([1,80],dtype=torch.uint8)
+train_output_store = np.uint8(np.zeros((1,60)))
+train_output_t_store = torch.zeros([1,60],dtype=torch.uint8)
 
 for i in range(10):
 	train_output = np.uint8(np.load('train_output_' + str(i) + '.npy'))
@@ -39,8 +39,8 @@ np.save('train_labels.npy',train_labels_store[1:])
 
 
 
-test_output_store = np.uint8(np.zeros((1,80)))
-test_output_t_store = torch.zeros([1,80],dtype=torch.uint8)
+test_output_store = np.uint8(np.zeros((1,60)))
+test_output_t_store = torch.zeros([1,60],dtype=torch.uint8)
 
 for i in range(3):
 	test_output = np.uint8(np.load('test_output_' + str(i) + '.npy'))

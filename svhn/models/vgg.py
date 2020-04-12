@@ -20,7 +20,7 @@ class bin_act(nn.Module):
 
 
 class VGG(nn.Module):
-    def __init__(self, vgg_name,inputs=8):
+    def __init__(self, vgg_name,inputs=6):
         super(VGG, self).__init__()
         self.features = self._make_layers(cfg[vgg_name])
         #self.classifier = nn.Linear(512, 10)

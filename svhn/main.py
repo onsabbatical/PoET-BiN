@@ -154,7 +154,7 @@ def test(epoch):
 def storage(loader_v,nme):
     net.eval()
     main_array1 = torch.ByteTensor(1,512)
-    main_array2 = torch.ByteTensor(1,80)
+    main_array2 = torch.ByteTensor(1,60)
     out_label = torch.ByteTensor(1)
     with torch.no_grad():
         for ct,(inputs,targets) in enumerate(loader_v):

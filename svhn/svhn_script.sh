@@ -22,7 +22,7 @@ cp *labels.npy rinc/
 
 cd rinc/
 
-echo "Training 80 DTs in parallel"
+echo "Training 60 DTs in parallel"
 
 python my_pool_multi_1.py
 
